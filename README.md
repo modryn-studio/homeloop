@@ -1,5 +1,7 @@
 # HomeLoop
 
+**Enable homeowners to find and contact qualified home service providers in under 3 minutes without needing to visit multiple websites or make phone calls.**
+
 A home service provider marketplace demo built with Next.js 16, React 19, and Tailwind CSS.
 
 ## Features
