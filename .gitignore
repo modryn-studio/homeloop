@@ -24,20 +24,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-ENV/
-backend/.env
-
-# Uploads
-backend/uploads/
-
 # Testing
 coverage/
 .pytest_cache/

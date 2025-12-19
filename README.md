@@ -1,6 +1,6 @@
 # HomeLoop
 
-A home service provider marketplace built with Next.js 15, React 19, Tailwind CSS, and FastAPI backend.
+A home service provider marketplace demo built with Next.js 16, React 19, and Tailwind CSS.
 
 ## Features
 
@@ -14,9 +14,10 @@ A home service provider marketplace built with Next.js 15, React 19, Tailwind CS
 ## Tech Stack
 
 - **Frontend**: Next.js 16, React 19, TailwindCSS, Radix UI
-- **Backend**: FastAPI, MongoDB (Motor), Python
+- **Data**: Mock data (client-side demo)
 - **Icons**: Lucide React
 - **Notifications**: Sonner
+- **Forms**: React Hook Form + Zod validation (ready for expansion)
 
 ## Project Structure
 
@@ -45,14 +46,6 @@ lib/              # Utility functions and shared code
 ├── auth.js             # Auth context (localStorage)
 ├── data.js             # Demo providers & categories
 └── utils.js            # cn() helper
-
-backend/          # FastAPI backend
-├── server.py     # Main FastAPI application
-├── requirements.txt
-└── uploads/      # File uploads directory
-
-public/           # Static assets
-package.json      # Node.js dependencies
 ```
 
 ## Getting Started
@@ -60,48 +53,20 @@ package.json      # Node.js dependencies
 ### Prerequisites
 
 - Node.js 20+ and npm
-- Python 3.9+
-- MongoDB (optional for backend)
 
 ### Installation
 
-1. **Install frontend dependencies:**
-   ```bash
-   npm install
-   ```
-
-2. **Install backend dependencies:**
-   ```bash
-   cd backend
-   pip install -r requirements.txt
-   ```
-
-3. **Set up environment variables:**
-   - Create `backend/.env` with:
-     ```
-     MONGO_URL=your_mongodb_connection_string
-     DB_NAME=homeloop
-     ```
+```bash
+npm install
+```
 
 ### Development
 
-**Run frontend only:**
 ```bash
 npm run dev
 ```
 
-**Run backend only:**
-```bash
-npm run backend
-```
-
-**Run both (requires `concurrently`):**
-```bash
-npm install -g concurrently
-npm run dev:all
-```
-
-The Next.js app will run on http://localhost:3000 and the FastAPI backend on http://localhost:8000.
+The app will run on http://localhost:3000
 
 ### Building for Production
 
@@ -112,12 +77,12 @@ npm start
 
 ## Demo Credentials
 
-- **Provider Login**: Any email + password
-- **Admin Login**: Any email + password
+- **Provider Login**: Any email + password (mock authentication)
+- **Admin Login**: Any email + password (mock authentication)
 
 ## Deploy to Vercel
 
-1. Push this folder to a GitHub repository
+1. Push to a GitHub repository
 2. Go to [vercel.com](https://vercel.com) and import the repository
 3. Vercel auto-detects Next.js and deploys
 4. Done! Get your `.vercel.app` URL
@@ -127,6 +92,15 @@ Or use CLI:
 npm i -g vercel
 vercel
 ```
+
+## Future Enhancements
+
+If moving to production, consider:
+- **Backend**: Vercel Serverless Functions or Supabase
+- **Database**: PostgreSQL (Supabase) or MongoDB Atlas
+- **Auth**: NextAuth.js or Supabase Auth
+- **File Storage**: Vercel Blob or Supabase Storage
+- **Forms**: Already includes React Hook Form + Zod for validation
 
 ## Customization
 
