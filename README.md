@@ -1,6 +1,6 @@
-# HomeLoop - Next.js Demo
+# HomeLoop
 
-A home service provider marketplace demo built with Next.js 15, React 19, and Tailwind CSS.
+A home service provider marketplace built with Next.js 15, React 19, Tailwind CSS, and FastAPI backend.
 
 ## Features
 
@@ -13,35 +13,107 @@ A home service provider marketplace demo built with Next.js 15, React 19, and Ta
 
 ## Tech Stack
 
-- **Framework**: Next.js 15 (App Router)
-- **UI**: React 19, Tailwind CSS, Shadcn/ui
+- **Frontend**: Next.js 16, React 19, TailwindCSS, Radix UI
+- **Backend**: FastAPI, MongoDB (Motor), Python
 - **Icons**: Lucide React
 - **Notifications**: Sonner
 
-## Demo Mode
+## Project Structure
 
-This is a **zero-database demo**:
-- All data is hardcoded in `/lib/data.js`
-- Authentication uses localStorage (any credentials work)
-- Contact forms simulate success without sending emails
-- File uploads are simulated
-- CRUD operations persist only in component state
+```
+app/              # Next.js app directory
+├── layout.jsx          # Root layout with providers
+├── client-layout.jsx   # Client-side navbar/footer
+├── page.jsx            # Homepage
+├── directory/
+│   ├── page.jsx        # All categories
+│   └── [slug]/page.jsx # Category providers
+├── providers/
+│   └── [slug]/page.jsx # Provider profile
+├── login/page.jsx      # Provider login
+├── register/page.jsx   # Provider registration
+├── dashboard/page.jsx  # Provider dashboard
+└── admin/
+    ├── page.jsx        # Admin dashboard
+    └── login/page.jsx  # Admin login
+
+components/       # React components
+├── layout.jsx          # Navbar & Footer
+└── ui/                 # Shadcn/ui components
+
+lib/              # Utility functions and shared code
+├── auth.js             # Auth context (localStorage)
+├── data.js             # Demo providers & categories
+└── utils.js            # cn() helper
+
+backend/          # FastAPI backend
+├── server.py     # Main FastAPI application
+├── requirements.txt
+└── uploads/      # File uploads directory
+
+public/           # Static assets
+package.json      # Node.js dependencies
+```
 
 ## Getting Started
 
+### Prerequisites
+
+- Node.js 20+ and npm
+- Python 3.9+
+- MongoDB (optional for backend)
+
+### Installation
+
+1. **Install frontend dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Install backend dependencies:**
+   ```bash
+   cd backend
+   pip install -r requirements.txt
+   ```
+
+3. **Set up environment variables:**
+   - Create `backend/.env` with:
+     ```
+     MONGO_URL=your_mongodb_connection_string
+     DB_NAME=homeloop
+     ```
+
+### Development
+
+**Run frontend only:**
 ```bash
-# Install dependencies
-npm install
-
-# Run development server
 npm run dev
+```
 
-# Build for production
+**Run backend only:**
+```bash
+npm run backend
+```
+
+**Run both (requires `concurrently`):**
+```bash
+npm install -g concurrently
+npm run dev:all
+```
+
+The Next.js app will run on http://localhost:3000 and the FastAPI backend on http://localhost:8000.
+
+### Building for Production
+
+```bash
 npm run build
-
-# Start production server
 npm start
 ```
+
+## Demo Credentials
+
+- **Provider Login**: Any email + password
+- **Admin Login**: Any email + password
 
 ## Deploy to Vercel
 
@@ -55,40 +127,6 @@ Or use CLI:
 npm i -g vercel
 vercel
 ```
-
-## Project Structure
-
-```
-nextjs/
-├── app/
-│   ├── layout.jsx          # Root layout with providers
-│   ├── client-layout.jsx   # Client-side navbar/footer
-│   ├── page.jsx            # Homepage
-│   ├── directory/
-│   │   ├── page.jsx        # All categories
-│   │   └── [slug]/page.jsx # Category providers
-│   ├── providers/
-│   │   └── [slug]/page.jsx # Provider profile
-│   ├── login/page.jsx      # Provider login
-│   ├── register/page.jsx   # Provider registration
-│   ├── dashboard/page.jsx  # Provider dashboard
-│   └── admin/
-│       ├── page.jsx        # Admin dashboard
-│       └── login/page.jsx  # Admin login
-├── components/
-│   ├── layout.jsx          # Navbar & Footer
-│   └── ui/                 # Shadcn/ui components
-├── lib/
-│   ├── auth.js             # Auth context (localStorage)
-│   ├── data.js             # Demo providers & categories
-│   └── utils.js            # cn() helper
-└── public/                 # Static assets
-```
-
-## Demo Credentials
-
-- **Provider Login**: Any email + password
-- **Admin Login**: Any email + password
 
 ## Customization
 
